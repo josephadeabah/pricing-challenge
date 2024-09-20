@@ -34,13 +34,13 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center h-full px-4 gap-8 py-8">
-      <div className="w-full max-w-[392px] bg-[url('./images/pattern-circles.svg')] py-12 bg-no-repeat bg-contain bg-center mx-auto">
+    <div className="flex flex-col items-center h-full px-4 gap-8">
+      <div className="w-full max-w-[392px] bg-[url('./images/pattern-circles.svg')] py-8 mt-12 bg-no-repeat bg-contain bg-center mx-auto">
         <h1 className="text-center text-2xl font-bold relative z-10">Simple, traffic-based pricing</h1>
         <h2 className="text-center text-sm opacity-60 mt-2 relative z-10 text-gray-500">Sign-up for our 30-day trial. No credit card required.</h2>
       </div>
 
-      <div className="relative bg-white rounded-lg mx-auto h-fit max-h-lg w-full max-w-md px-4 py-4 shadow-xl">
+      <div className="relative bg-white rounded-lg mx-auto h-fit max-h-lg w-full max-w-md px-4 py-4 mt-10 shadow-xl">
         <div className="flex flex-col items-center">
           {/* Centered above the slider on mobile */}
           <p className="font-semibold text-sm opacity-60 mt-2 md:hidden text-center">{sliderValue}K Pageviews</p>
@@ -67,7 +67,7 @@ const Home = () => {
               <span className="text-sm font-normal text-gray-400 ml-1">{isYearly ? '/year' : '/month'}</span>
             </p>
           </div>
-          <div className="flex justify-between gap-2 items-center text-xs font-medium text-gray-400 mt-4">
+          <div className="flex justify-between gap-2 items-center text-xs font-medium text-gray-400 mt-12">
             <p className="">Monthly Billing</p>
             <Switch
               checked={isYearly}
