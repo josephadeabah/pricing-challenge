@@ -19,7 +19,7 @@ const Slider = React.forwardRef<
     <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-gray-300/20">
       <SliderPrimitive.Range className="absolute h-full bg-teal-200" />
     </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className="relative block h-8 w-8 rounded-full bg-teal-200 shadow-lg transition-colors focus-visible:outline-none focus:bg-teal-500 focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
+    <SliderPrimitive.Thumb className="relative block h-8 w-8 cursor-pointer rounded-full bg-teal-200 shadow-lg transition-colors focus-visible:outline-none focus:bg-teal-500 focus-visible:ring-1 focus-visible:ring-teal-500 disabled:pointer-events-none disabled:opacity-50">
       <div className="flex justify-center items-center h-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ const Slider = React.forwardRef<
           height="13"
           className=""
         >
-          <g fill="#E4F8F0" fillRule="evenodd">
+          <g fill="#efefef" fillRule="evenodd">
             <path d="M6 2.558v7.884a1 1 0 01-1.735.679L.626 7.178a1 1 0 010-1.356l3.64-3.943A1 1 0 016 2.558z" />
           </g>
         </svg>
@@ -37,7 +37,7 @@ const Slider = React.forwardRef<
           height="13"
           className="transform rotate-180"
         >
-          <g fill="#E4F8F0" fillRule="evenodd">
+          <g fill="#efefef" fillRule="evenodd">
             <path d="M6 2.558v7.884a1 1 0 01-1.735.679L.626 7.178a1 1 0 010-1.356l3.64-3.943A1 1 0 016 2.558z" />
           </g>
         </svg>

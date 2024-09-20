@@ -72,7 +72,7 @@ const Home = () => {
             <Switch
               checked={isYearly}
               onCheckedChange={handleToggle}
-              className=""
+              className="hover:bg-teal-300"
             />
             <p className="hidden md:block">Yearly Billing
               <span className="bg-orange-50 px-2 text-orange-500 rounded-full text-xs font-bold">
