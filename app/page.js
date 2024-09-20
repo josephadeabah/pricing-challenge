@@ -1,7 +1,8 @@
 "use client";
 import { useState } from 'react';
-import { Slider } from './components/Slider'; // Adjust based on the actual import path
-import { Switch } from './components/Switch'; // Adjust based on the actual import path
+import { Slider } from './components/Slider';
+import { Switch } from './components/Switch';
+import { Checkbox } from './components/Checkbox';
 
 const pricing = [
   { views: 0, price: 0 },
@@ -19,7 +20,7 @@ const pricing = [
 
 const Home = () => {
   const [isYearly, setIsYearly] = useState(false);
-  const [sliderValue, setSliderValue] = useState(200); // Default slider value
+  const [sliderValue, setSliderValue] = useState(200);
 
   const handleToggle = () => {
     setIsYearly(!isYearly);
@@ -28,58 +29,79 @@ const Home = () => {
   const getPrice = () => {
     const selectedPlan = pricing.find(plan => plan.views === sliderValue);
     if (!selectedPlan) return 0;
-    const price = isYearly ? selectedPlan.price * 0.75 : selectedPlan.price; // Apply 25% discount for yearly
+    const price = isYearly ? selectedPlan.price * 0.75 : selectedPlan.price;
     return price.toFixed(2);
   };
 
   return (
-    <div className="flex flex-col items-center px-4 md:px-0">
-      <div className="bg-[url('./images/pattern-circles.svg')] bg-no-repeat bg-contain w-full max-w-[392px] h-[162px] mx-auto mb-8">
-        <h1 className="text-center text-2xl font-bold mt-8">Simple, traffic-based pricing</h1>
-        <h2 className="text-center text-sm opacity-60 mt-2">Sign-up for our 30-day trial. No credit card required.</h2>
+    <div className="flex flex-col items-center h-full px-4 gap-8 py-8">
+      <div className="w-full max-w-[392px] bg-[url('./images/pattern-circles.svg')] py-12 bg-no-repeat bg-contain bg-center mx-auto">
+        <h1 className="text-center text-2xl font-bold relative z-10">Simple, traffic-based pricing</h1>
+        <h2 className="text-center text-sm opacity-60 mt-2 relative z-10 text-gray-500">Sign-up for our 30-day trial. No credit card required.</h2>
       </div>
 
-      <article className="relative bg-white rounded-2xl mx-auto max-w-md mt-16 p-6 shadow-lg">
-        <div className="text-center">
-          <p className="font-semibold text-lg opacity-60 mt-2">{sliderValue}K Pageviews</p>
-          <p className="font-bold text-[60px] flex justify-center items-baseline">
-            ${getPrice()}
-            <span className="text-xl font-normal ml-1">{isYearly ? '/year' : '/month'}</span>
-          </p>
-
+      <div className="relative bg-white rounded-lg mx-auto h-fit max-h-lg w-full max-w-md px-4 py-4 shadow-xl">
+        <div className="flex flex-col items-center">
+          {/* Centered above the slider on mobile */}
+          <p className="font-semibold text-sm opacity-60 mt-2 md:hidden text-center">{sliderValue}K Pageviews</p>
+          {/* For desktop layout */}
+          <div className="hidden md:flex justify-between items-baseline w-full mt-2">
+            <p className="font-semibold text-sm opacity-60 text-gray-500">{sliderValue}K Pageviews</p>
+            <p className="font-bold text-[60px] flex items-baseline">
+              ${getPrice()}
+              <span className="text-sm font-semibold ml-1 text-gray-400">{isYearly ? '/year' : '/month'}</span>
+            </p>
+          </div>
           <Slider
             value={[sliderValue]}
-            onValueChange={values => setSliderValue(values[0])} // This receives an array
+            onValueChange={values => setSliderValue(values[0])}
             min={0}
             max={1000}
             step={100}
             className="mt-6"
           />
-
-          <div className="flex justify-center items-center mt-4">
-            <p className="mr-4">Monthly Billing</p>
+          {/* Centered below the slider on mobile */}
+          <div className="flex flex-col items-center mt-2 md:hidden">
+            <p className="font-bold text-[60px] flex items-baseline">
+              ${getPrice()}
+              <span className="text-sm font-normal text-gray-400 ml-1">{isYearly ? '/year' : '/month'}</span>
+            </p>
+          </div>
+          <div className="flex justify-between gap-2 items-center text-xs font-medium text-gray-400 mt-4">
+            <p className="">Monthly Billing</p>
             <Switch
               checked={isYearly}
               onCheckedChange={handleToggle}
-              className="mr-4"
+              className=""
             />
-            <p className="ml-4">Yearly Billing <span className="bg-hsl(14, 92%, 95%) text-hsl(15, 100%, 70%) font-bold ml-1">25% discount</span></p>
+            <p className="hidden md:block">Yearly Billing
+              <span className="bg-orange-50 px-2 text-orange-500 rounded-full text-xs font-bold">
+                <span className='hidden md:inline'>25% </span> discount
+              </span>
+            </p>
+            {/* This line keeps the discount on all devices but hides "discount" on mobile */}
+            <p className="md:hidden">Yearly Billing
+              <span className="bg-orange-50 px-2 text-orange-500 rounded-full text-xs font-bold">
+                25%
+              </span>
+            </p>
           </div>
-
-          <div className="mt-6 flex flex-wrap justify-between">
-            <div className="mt-6">
+          <div className="mt-6 flex flex-col md:flex-row w-full md:justify-between items-center">
+            <div className="mt-6 flex flex-col items-center md:items-start">
               {['Unlimited websites', '100% data ownership', 'Email reports'].map((addon, index) => (
                 <div key={index} className="flex items-center mb-2">
-                  <input type="checkbox" className="mr-2" defaultChecked />
-                  <p className="font-bold">{addon}</p>
+                  <Checkbox className="mr-2 shadow-none border-none text-teal-400" defaultChecked />
+                  <p className="font-normal text-gray-400 text-sm">{addon}</p>
                 </div>
               ))}
             </div>
-
-            <button className="bg-blue-900 text-white font-bold py-1 px-4 rounded-md mt-4 md:mt-0">Start my trial</button>
+            <div className='flex justify-center items-center mt-4 md:mt-0'>
+              <button className="bg-blue-900 text-blue-100 py-2 px-6 text-sm rounded-full">Start my trial</button>
+            </div>
           </div>
+
         </div>
-      </article>
+      </div>
     </div>
   );
 };
