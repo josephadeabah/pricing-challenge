@@ -27,7 +27,7 @@ const Slider = React.forwardRef<
           height="13"
           className=""
         >
-          <g fill="#efefef" fillRule="evenodd">
+          <g fill="#DAFFFB" fillRule="evenodd">
             <path d="M6 2.558v7.884a1 1 0 01-1.735.679L.626 7.178a1 1 0 010-1.356l3.64-3.943A1 1 0 016 2.558z" />
           </g>
         </svg>
@@ -37,7 +37,7 @@ const Slider = React.forwardRef<
           height="13"
           className="transform rotate-180"
         >
-          <g fill="#efefef" fillRule="evenodd">
+          <g fill="#DAFFFB" fillRule="evenodd">
             <path d="M6 2.558v7.884a1 1 0 01-1.735.679L.626 7.178a1 1 0 010-1.356l3.64-3.943A1 1 0 016 2.558z" />
           </g>
         </svg>
