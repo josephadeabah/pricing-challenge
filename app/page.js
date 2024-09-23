@@ -86,9 +86,9 @@ const Home = () => {
               </span>
             </p>
           </div>
-          <hr className='w-full border border-1 my-5 border-gray-200' />
-          <div className="mt-6 flex flex-col md:flex-row w-full md:justify-between px-4 items-center">
-            <div className="mt-6 flex flex-col items-center md:items-start">
+          <hr className='w-full border border-1 my-5 mt-10 border-gray-200' />
+          <div className=" flex flex-col md:flex-row w-full md:justify-between px-4 items-center">
+            <div className="flex flex-col items-center md:items-start">
               {['Unlimited websites', '100% data ownership', 'Email reports'].map((addon, index) => (
                 <div key={index} className="flex items-center mb-2">
                   <Checkbox className="mr-2 shadow-none border-none text-teal-400" defaultChecked />
