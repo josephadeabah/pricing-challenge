@@ -34,13 +34,13 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center h-full gap-8">
+    <div className="flex flex-col items-center h-full gap-8 mx-8 md:mx-0">
       <div className="w-full max-w-[392px] bg-[url('./images/pattern-circles.svg')] py-8 mt-12 bg-no-repeat bg-contain bg-center mx-auto">
         <h1 className="text-center text-2xl font-bold relative z-10">Simple, traffic-based pricing</h1>
-        <h2 className="text-center text-sm opacity-60 mt-2 relative z-10 text-gray-500">Sign-up for our 30-day trial. No credit card required.</h2>
+        <h2 className="flex flex-col md:flex-row items-center justify-center gap-2 text-center text-sm opacity-60 mt-2 relative z-10 text-gray-500"><div>Sign-up for our 30-day trial.</div> <div>No credit card required.</div></h2>
       </div>
-
-      <div className="relative bg-white rounded-lg mx-auto h-fit max-h-lg w-full max-w-md py-4 mt-10 shadow-xl">
+      {/* Main container */}
+      <div className="relative bg-white rounded-lg h-fit max-h-lg w-full max-w-md py-4 mt-8 shadow-xl">
         <div className="flex flex-col items-center">
           {/* Centered above the slider on mobile */}
           <p className="font-semibold text-sm opacity-60 mt-2 md:hidden text-center">{sliderValue}K Pageviews</p>
@@ -100,7 +100,6 @@ const Home = () => {
               <button className="bg-blue-900 text-blue-100 py-2 px-6 text-sm rounded-full">Start my trial</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
